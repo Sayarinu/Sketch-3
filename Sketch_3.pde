@@ -5,6 +5,7 @@
 // b = changes the blue rgb value
 // q = clears screen
 // mouse click = puts the locations for the star circles
+//  Right click is counter-clockwise, left click is clockwise
 
 int x, y;
 
@@ -30,7 +31,11 @@ void draw() {
   if (mousePressed) { // While the mouse is pressed, do circle loops
     pushMatrix(); // matrix transformation start
     translate(x, y); // translates it to our mouseX and mouseY when we click
-    rotate(radians(angle)); // rotates our frame
+    if (mouseButton == RIGHT) {
+       rotate(radians(-1 * angle)); // rotates our frame 
+    } else {
+       rotate(radians(angle)); 
+    }
     star(0,0); // draws our star at the location of the mouse press
     popMatrix();
     angle++; // updates our angle for rotation
